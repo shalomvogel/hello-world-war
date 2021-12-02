@@ -12,28 +12,14 @@ pipeline {
                 sh 'mvn -f pom.xml clean package' 
             }
         }
-        stage('SonarQube Analysis') {
-            steps{
-                step {
-                def mvn = tool 'maven'
-                }
-                step {
-            withSonarQubeEnv() {
-            sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=module6"
-            }
-        }
-        }
-            
+        stage('SonarCube-test') {
+            steps {
+        sh '''export SONAR_TOKEN="7e5e9f8ebf5229de74716e945f8239a419a7aa68"
+mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=module6'''
+      }
+    }
     }
 }
-}
-
-//     stage('SonarCube-test') {
-//       steps {
-//         sh '''export SONAR_TOKEN="f56f70c41841c6584787d8bb2540c713aa00499b"
-// mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Foondel_hello-world-war'''
-//       }
-//     }
 
 //     stage('docker build') {
 //       steps {
