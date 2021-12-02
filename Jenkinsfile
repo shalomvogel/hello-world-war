@@ -1,5 +1,9 @@
 pipeline {
-    agent any 
+    agent any
+    tools {
+        maven "maven"
+    }
+    
     
     stages {
         stage('Build') { 
@@ -9,10 +13,12 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            def mvn = tool 'maven';
+            steps{def mvn = tool 'Default Maven';
             withSonarQubeEnv() {
             sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=module6"
         }
+        }
+            
     }
 }
 }
