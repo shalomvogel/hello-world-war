@@ -19,7 +19,7 @@ pipeline {
         }
     }
 }
-
+}
 
 //     stage('SonarCube-test') {
 //       steps {
