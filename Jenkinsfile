@@ -13,9 +13,14 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            steps{def mvn = tool 'maven';
+            steps{
+                step {
+                def mvn = tool 'maven'
+                }
+                step {
             withSonarQubeEnv() {
             sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=module6"
+            }
         }
         }
             
