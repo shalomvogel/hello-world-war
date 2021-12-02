@@ -2,10 +2,17 @@ pipeline {
     agent any
     
     stages {
-        stage('Build') { 
+        // stage('Build') { 
+        //     steps {
+        //         echo 'Building..'
+        //         sh 'mvn -B -DskipTests clean package' 
+        //     }
+        // }
+        stage('Build') {
             steps {
-                echo 'Building..'
-                sh 'mvn -B -DskipTests clean package' 
+                dir("/var/lib/jenkins/workspace/module6/my-app") {
+                sh 'mvn -B -DskipTests clean package'
+                }
             }
         }
         stage('Test') {
@@ -20,3 +27,4 @@ pipeline {
         }
     }
 }
+
