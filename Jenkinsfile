@@ -31,7 +31,7 @@ pipeline {
         stage('docker push') {
              steps {
                 script {
-                  docker.withRegistry('http://localhost:8123', 'nexus') {
+                  docker.withRegistry('http://localhost:8123', 'admin') {
                       docker.build('hww-shalom').push('latest') }
         
       }
@@ -42,7 +42,7 @@ pipeline {
   environment {
     registry = 'localhost:8123/'
     imageName = 'hww-shalom'
-    registryCredentials = 'nexus'
+    registryCredentials = 'admin'
     buildId = ''
   }
 }
