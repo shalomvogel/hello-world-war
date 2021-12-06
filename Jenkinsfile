@@ -31,7 +31,7 @@ pipeline {
         stage('docker push') {
              steps {
                 script {
-                  docker.withRegistry('http://localhost:8123', 'admin') {
+                  docker.withRegistry('http://localhost:8123', 'nexus') {
                       docker.build('hww-shalom').push(${BUILD_NUMBER}) }
         
       }
