@@ -20,7 +20,7 @@ pipeline {
         }
             stage('docker build') {
                  steps {
-        sh 'docker build -t hww-shalom:latest .'
+        sh 'docker build -t hww-shalom:${BUILD_NUMBER} .'
       }
     }
       stage('docker tag') {
