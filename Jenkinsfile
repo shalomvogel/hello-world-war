@@ -31,7 +31,7 @@ pipeline {
         stage('docker push') {
              steps {
                 script {
-                  docker.withRegistry('http://localhost:8081/repository/module6/', 'nexus') {
+                  docker.withRegistry('http://localhost:8123', 'nexus') {
                       docker.build('hww-shalom').push('latest') }
         
       }
@@ -46,3 +46,4 @@ pipeline {
     buildId = ''
   }
 }
+
