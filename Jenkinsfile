@@ -25,14 +25,14 @@ pipeline {
     }
       stage('docker tag') {
          steps {
-        sh 'docker tag hello_world_war:latest localhost:8123/hello_world_war:latest'
+        sh 'docker tag hww-shalom:latest localhost:8123/hww-shalom:latest'
       }
     }
         stage('docker push') {
              steps {
                 script {
                   docker.withRegistry('http://localhost:8123', 'nexus') {
-                      docker.build('hello_world_war').push('latest') }
+                      docker.build('hww-shalom').push('latest') }
         
       }
     }
@@ -41,7 +41,7 @@ pipeline {
     
   environment {
     registry = 'localhost:8123/'
-    imageName = 'hello_world_war'
+    imageName = 'hww-shalom'
     registryCredentials = 'nexus'
     buildId = ''
   }
