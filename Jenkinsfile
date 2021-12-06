@@ -19,29 +19,39 @@ pipeline {
             }
         }
             stage('docker build') {
-      steps {
+                 steps {
         sh 'docker build -t hww-shalom:latest .'
       }
     }
       }
       stage('docker tag') {
-      steps {
+         steps {
         sh 'docker tag hello_world_war:latest 192.168.1.224:8123/hello_world_war:latest'
       }
     }
         stage('docker push') {
-      steps {
-        script {
-          docker.withRegistry('http://192.168.1.224:8123', 'nexus') {
-            docker.build('hello_world_war').push('latest') }
+             steps {
+                script {
+                  docker.withRegistry('http://localhost:8123', 'nexus') {
+                      docker.build('hello_world_war').push('latest') }
         
       }
     }
 }
   environment {
-    registry = '192.168.1.224:8123/'
+    registry = 'localhost:8123/'
     imageName = 'hello_world_war'
     registryCredentials = 'nexus'
     buildId = ''
   }
 }
+
+    
+
+
+//       }
+//     }
+
+//   }
+
+// }
