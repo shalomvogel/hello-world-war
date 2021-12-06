@@ -32,7 +32,7 @@ pipeline {
              steps {
                 script {
                   docker.withRegistry('http://localhost:8123', 'admin') {
-                      docker.build('hww-shalom').push('latest') }
+                      docker.build('hww-shalom').push(${BUILD_NUMBER}) }
         
       }
     }
