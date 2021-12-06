@@ -40,7 +40,7 @@ pipeline {
       }
     
   environment {
-    registry = 'http://localhost:8081/repository/module6/'
+    registry = 'http://localhost:8123'
     imageName = 'hww-shalom'
     registryCredentials = 'nexus'
     buildId = ''
