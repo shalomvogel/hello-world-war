@@ -42,7 +42,7 @@ pipeline {
   environment {
     registry = 'localhost:8123/'
     imageName = 'hww-shalom'
-    registryCredentials = 'admin'
+    registryCredentials = 'nexus'
     buildId = ''
   }
 }
