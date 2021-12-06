@@ -20,19 +20,19 @@ pipeline {
         }
             stage('docker build') {
                  steps {
-        sh 'docker build -t hww-shalom:${BUILD_NUMBER} .'
+        sh 'docker build -t hww-shalom:latest .'
       }
     }
       stage('docker tag') {
          steps {
-        sh 'docker tag hww-shalom:${BUILD_NUMBER} localhost:8123/hww-shalom:${BUILD_NUMBER}'
+        sh 'docker tag hww-shalom:${BUILD_NUMBER} http://localhost:8081/repository/module6/hww-shalom:${BUILD_NUMBER}'
       }
     }
         stage('docker push') {
              steps {
                 script {
-                  docker.withRegistry('http://localhost:8123', 'nexus') {
-                      docker.build('hww-shalom').push(${BUILD_NUMBER}) }
+                  docker.withRegistry('http://localhost:8081/repository/module6/', 'nexus') {
+                      docker.build('hww-shalom').push('latest') }
         
       }
     }
@@ -40,7 +40,7 @@ pipeline {
       }
     
   environment {
-    registry = 'localhost:8123/'
+    registry = 'http://localhost:8081/repository/module6/'
     imageName = 'hww-shalom'
     registryCredentials = 'nexus'
     buildId = ''
