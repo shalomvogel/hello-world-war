@@ -25,7 +25,7 @@ pipeline {
     }
       stage('docker tag') {
          steps {
-        sh 'docker tag hww-shalom:latest localhost:8123/hww-shalom:latest'
+        sh 'docker tag hww-shalom:${BUILD_NUMBER} localhost:8123/hww-shalom:${BUILD_NUMBER}'
       }
     }
         stage('docker push') {
