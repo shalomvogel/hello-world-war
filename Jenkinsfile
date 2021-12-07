@@ -14,7 +14,7 @@ pipeline {
         }
         stage('SonarCube-test') {
             steps {
-                 sh '''export SONAR_TOKEN="bc7806c6fb6050c0aba0a86cc467df69a64a3267"
+                 sh '''export SONAR_TOKEN="217b3c3b01fe965cfdc801827458c0a3f6e92f6d"
                  mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=module6'''
             }
         }
